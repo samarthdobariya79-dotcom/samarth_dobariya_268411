@@ -779,6 +779,146 @@ section {
 }
 
 /* --------------------------------------------------------------------------
+   8. PROJECTS SECTION
+   -------------------------------------------------------------------------- */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 30px;
+}
+
+.project-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--border-highlight);
+  box-shadow: 0 16px 36px -10px var(--accent-glow);
+}
+
+.project-card-header {
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.project-bg-ai {
+  background: linear-gradient(135deg, #0f2b46 0%, #1e1b4b 100%);
+}
+
+.project-bg-cv {
+  background: linear-gradient(135deg, #064e3b 0%, #1e3a5f 100%);
+}
+
+.project-bg-web {
+  background: linear-gradient(135deg, #431407 0%, #311042 100%);
+}
+
+.project-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(8, 12, 20, 0.75);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.project-icon-large {
+  font-size: 4rem;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4));
+  transition: transform var(--transition-smooth);
+}
+
+.project-card:hover .project-icon-large {
+  transform: scale(1.15) rotate(-4deg);
+}
+
+.project-body {
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.tech-stack-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.tech-pill {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  background: rgba(56, 189, 248, 0.08);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.project-title {
+  font-size: 1.28rem;
+  margin-bottom: 12px;
+}
+
+.project-desc {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin-bottom: 18px;
+  flex-grow: 1;
+}
+
+.project-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-light);
+}
+
+.project-features-list span {
+  color: var(--accent-cyan);
+}
+
+.project-card-footer {
+  padding-top: 12px;
+}
+
+.card-btn {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  display: inline-flex;
+  align-items: center;
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.card-btn:hover {
+  color: #ffffff;
+  transform: translateX(5px);
+}
+
+/* --------------------------------------------------------------------------
    10. FOOTER STYLES
    -------------------------------------------------------------------------- */
 #main-footer {
