@@ -87,4 +87,159 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
+  /* ==========================================================================
+     FEATURE 3: CONTACT FORM VALIDATION & INTERACTIVE FEEDBACK
+     ========================================================================== */
+  const contactForm = document.getElementById('contact-form');
+  const nameInput = document.getElementById('name');
+  const emailInput = document.getElementById('email');
+  const subjectInput = document.getElementById('subject');
+  const messageInput = document.getElementById('message');
+  const formStatus = document.getElementById('form-status');
+  const submitBtn = document.getElementById('submit-btn');
+
+  function setError(inputElement, errorElementId, message) {
+    const errorEl = document.getElementById(errorElementId);
+    const parentGroup = inputElement ? inputElement.closest('.form-group') : null;
+
+    if (errorEl) errorEl.textContent = message;
+    if (parentGroup) parentGroup.classList.add('has-error');
+  }
+
+  function clearError(inputElement, errorElementId) {
+    const errorEl = document.getElementById(errorElementId);
+    const parentGroup = inputElement ? inputElement.closest('.form-group') : null;
+
+    if (errorEl) errorEl.textContent = '';
+    if (parentGroup) parentGroup.classList.remove('has-error');
+  }
+
+  function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email.trim());
+  }
+
+  // Real-time error clearance
+  if (nameInput) nameInput.addEventListener('input', () => clearError(nameInput, 'name-error'));
+  if (emailInput) emailInput.addEventListener('input', () => clearError(emailInput, 'email-error'));
+  if (subjectInput) subjectInput.addEventListener('input', () => clearError(subjectInput, 'subject-error'));
+  if (messageInput) messageInput.addEventListener('input', () => clearError(messageInput, 'message-error'));
+
+  // Form submission handling
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let isValid = true;
+
+      // Validate Name
+      const nameVal = nameInput ? nameInput.value.trim() : '';
+      if (!nameVal) {
+        setError(nameInput, 'name-error', 'Please enter your full name.');
+        isValid = false;
+      } else if (nameVal.length < 2) {
+        setError(nameInput, 'name-error', 'Name must contain at least 2 characters.');
+        isValid = false;
+      } else {
+        clearError(nameInput, 'name-error');
+      }
+
+      // Validate Email
+      const emailVal = emailInput ? emailInput.value.trim() : '';
+      if (!emailVal) {
+        setError(emailInput, 'email-error', 'Please enter your email address.');
+        isValid = false;
+      } else if (!isValidEmail(emailVal)) {
+        setError(emailInput, 'email-error', 'Please enter a valid email address (e.g. name@example.com).');
+        isValid = false;
+      } else {
+        clearError(emailInput, 'email-error');
+      }
+
+      // Validate Subject
+      const subjectVal = subjectInput ? subjectInput.value.trim() : '';
+      if (!subjectVal) {
+        setError(subjectInput, 'subject-error', 'Please enter a subject or inquiry topic.');
+        isValid = false;
+      } else {
+        clearError(subjectInput, 'subject-error');
+      }
+
+      // Validate Message
+      const messageVal = messageInput ? messageInput.value.trim() : '';
+      if (!messageVal) {
+        setError(messageInput, 'message-error', 'Please write your message.');
+        isValid = false;
+      } else if (messageVal.length < 10) {
+        setError(messageInput, 'message-error', 'Message should be at least 10 characters long.');
+        isValid = false;
+      } else {
+        clearError(messageInput, 'message-error');
+      }
+
+      // If validation fails
+      if (!isValid) {
+        if (formStatus) {
+          formStatus.className = 'form-status error';
+          formStatus.textContent = 'Please fill out all required fields correctly.';
+        }
+        return;
+      }
+
+      // If valid, simulate transmission
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        const textSpan = submitBtn.querySelector('.btn-text');
+        if (textSpan) textSpan.textContent = 'Sending Message...';
+      }
+
+      setTimeout(() => {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          const textSpan = submitBtn.querySelector('.btn-text');
+          if (textSpan) textSpan.textContent = 'Send Message to Samarth';
+        }
+
+        if (formStatus) {
+          formStatus.className = 'form-status success';
+          formStatus.textContent = `Thank you, ${nameVal}! Your message has been sent to Samarth Dobariya. I will respond to ${emailVal} soon.`;
+        }
+
+        contactForm.reset();
+
+        setTimeout(() => {
+          if (formStatus) {
+            formStatus.className = 'form-status';
+            formStatus.textContent = '';
+          }
+        }, 7000);
+      }, 600);
+    });
+  }
+
+
+  /* ==========================================================================
+     FEATURE 4: SCROLLSPY (ACTIVE NAV HIGHLIGHT ON SCROLL)
+     ========================================================================== */
+  const sections = document.querySelectorAll('section[id]');
+
+  function updateActiveNavLink() {
+    const scrollPosition = window.pageYOffset + 130;
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const sectionId = section.getAttribute('id');
+
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${sectionId}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateActiveNavLink);
 });

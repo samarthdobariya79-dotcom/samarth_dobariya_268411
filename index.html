@@ -343,6 +343,110 @@
       </div>
     </section>
 
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+      <div class="section-header">
+        <span class="section-tag">Let's Connect</span>
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="title-underline"></div>
+        <p class="section-subtitle">Interested in collaboration, internship opportunities, or discussing AI/ML projects? Send a message!</p>
+      </div>
+
+      <div class="contact-wrapper">
+        <!-- Contact Information Column -->
+        <div class="contact-meta-box">
+          <h3 class="meta-title">Direct Information</h3>
+          <p class="meta-desc">
+            I am always open to engaging discussions regarding AI/ML research, software engineering, and industry collaborations.
+          </p>
+
+          <div class="meta-items-list">
+            <div class="meta-item">
+              <div class="meta-icon-box">👤</div>
+              <div class="meta-item-text">
+                <span class="meta-label">Full Name</span>
+                <strong>Samarth Dobariya</strong>
+              </div>
+            </div>
+
+            <div class="meta-item">
+              <div class="meta-icon-box">✉️</div>
+              <div class="meta-item-text">
+                <span class="meta-label">Email Address</span>
+                <a href="mailto:samarthdobariya79@gmail.com" class="meta-link">samarthdobariya79@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="meta-item">
+              <div class="meta-icon-box">💻</div>
+              <div class="meta-item-text">
+                <span class="meta-label">GitHub Profile</span>
+                <a href="https://github.com/samarthdobariya79-dotcom" target="_blank" rel="noopener noreferrer" class="meta-link">samarthdobariya79-dotcom</a>
+              </div>
+            </div>
+
+            <div class="meta-item">
+              <div class="meta-icon-box">🏛️</div>
+              <div class="meta-item-text">
+                <span class="meta-label">University</span>
+                <strong>JG University</strong>
+              </div>
+            </div>
+
+            <div class="meta-item">
+              <div class="meta-icon-box">🎓</div>
+              <div class="meta-item-text">
+                <span class="meta-label">Specialization</span>
+                <strong>B.Tech in CSE (AI &amp; ML)</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form with Enhanced Validation -->
+        <div class="contact-form-card">
+          <h3 class="form-title">Send a Message</h3>
+          <form id="contact-form" novalidate>
+            <!-- Name Input -->
+            <div class="form-group">
+              <label for="name">Your Full Name <span class="required">*</span></label>
+              <input type="text" id="name" name="name" placeholder="e.g. John Doe" autocomplete="name">
+              <small class="error-msg" id="name-error"></small>
+            </div>
+
+            <!-- Email Input -->
+            <div class="form-group">
+              <label for="email">Your Email Address <span class="required">*</span></label>
+              <input type="email" id="email" name="email" placeholder="e.g. john@example.com" autocomplete="email">
+              <small class="error-msg" id="email-error"></small>
+            </div>
+
+            <!-- Subject Input -->
+            <div class="form-group">
+              <label for="subject">Subject / Topic <span class="required">*</span></label>
+              <input type="text" id="subject" name="subject" placeholder="e.g. AI Project Collaboration / Internship Inquiry">
+              <small class="error-msg" id="subject-error"></small>
+            </div>
+
+            <!-- Message Textarea -->
+            <div class="form-group">
+              <label for="message">Your Message <span class="required">*</span></label>
+              <textarea id="message" name="message" rows="5" placeholder="Write your message here (min. 10 characters)..."></textarea>
+              <small class="error-msg" id="message-error"></small>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" id="submit-btn" class="btn btn-primary btn-full">
+              <span class="btn-text">Send Message to Samarth</span>
+              <svg class="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </button>
+
+            <!-- Status Banner -->
+            <div id="form-status" class="form-status" role="alert" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- Footer -->
